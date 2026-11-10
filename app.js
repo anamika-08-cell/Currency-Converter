@@ -12,5 +12,12 @@ for(let select of dropdowns){
         newOption.innerText = currCode;
         newOption.value = currCode;
         select.append(newOption);
+        if(select.name === "from" && currCode === "USD"){
+            newOption.selected = "selected";
+        }else if(select.name === "to" && currCode === "INR"){
+            newOption.selected = "selected"; //true either.
+        }
+        select.append(newOption);
+
     }
 }
