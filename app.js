@@ -18,9 +18,7 @@ for(let select of dropdowns){
             newOption.selected = "selected"; //true either.
         }
         select.append(newOption);
-
     }
-
     select.addEventListener("change", (evt) => {
       updateFlag(evt.target);
     });
@@ -34,10 +32,7 @@ const updateFlag = (element) => {
     img.src = newSrc;
 };
 
-
-
-btn.addEventListener("click" , async (evt) => {
-    evt.preventDefault(); // page auto refresh prevent.
+const updateExchangeRate = async () => {
     let amount = document.querySelector(".amount input");
     let amtVal = amount.value;
     if (amtVal === "" || amtVal < 1){
@@ -52,5 +47,19 @@ btn.addEventListener("click" , async (evt) => {
 
     let finalAmount = amtVal * rate;
     msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+};
+
+
+btn.addEventListener("click" , (evt) => {
+    evt.preventDefault(); // page auto refresh prevent.
+    updateExchangeRate();
+    
 });
+
+
+window.addEventListener("load", () => {
+ updateExchangeRate();
+});
+
+
 
